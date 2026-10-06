@@ -19,3 +19,7 @@ pnpm dev
 ```
 
 The Vercel project should use `apps/web` as its Root Directory.
+
+## Install as a PWA
+
+The app includes a web manifest, installable 192px/512px icons, a service worker, and a browser install prompt. On Android Chrome, open the live site and choose **Install app** or **Add to Home screen**. A PWA can then be packaged as an APK with a trusted web-activity wrapper such as Bubblewrap/Trusted Web Activity tooling.

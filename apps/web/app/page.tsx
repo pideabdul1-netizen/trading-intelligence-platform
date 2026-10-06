@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FeedStatusBar } from "@/components/FeedStatusBar";
+import { InstallAppButton } from "@/components/PwaControls";
 import { MarketCard } from "@/components/MarketCard";
 import { getFeedStatus, type FeedStatus } from "@/lib/market";
 
@@ -110,14 +111,17 @@ export default function DashboardPage() {
             </p>
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end">
-            <button
-              type="button"
-              onClick={() => void refresh()}
-              className="rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-cyan-200 transition hover:border-cyan-300/60 hover:bg-cyan-300/15 disabled:cursor-wait disabled:opacity-60"
-              disabled={loading}
-            >
-              {loading ? "Refreshing…" : "Refresh feeds"}
-            </button>
+            <div className="flex flex-wrap gap-2">
+              <InstallAppButton />
+              <button
+                type="button"
+                onClick={() => void refresh()}
+                className="rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-cyan-200 transition hover:border-cyan-300/60 hover:bg-cyan-300/15 disabled:cursor-wait disabled:opacity-60"
+                disabled={loading}
+              >
+                {loading ? "Refreshing…" : "Refresh feeds"}
+              </button>
+            </div>
             <p className="text-xs text-slate-500">
               {lastRefresh ? `Last checked ${new Date(lastRefresh).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}` : "Awaiting first response"}
             </p>
